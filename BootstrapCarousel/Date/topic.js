@@ -1,10 +1,11 @@
 let topicsArray = [
-    "課程介紹",
-    "隨機性",
-    "不上課",
-    "日期時間",
-    "不上課",
-    "條件判斷"
+    "沒有賽程",
+    "一場賽程",
+    "兩場賽程",
+    "一場賽程",
+    "兩場賽程",
+    "兩場賽程",
+    "兩場賽程"
 ];
 
 let startDate = new Date();
@@ -14,4 +15,4 @@ function setMonthAndDay(startMonth,startDay){
     startDate.setMinutes(0);
     startDate.setSeconds(0);
 }
-setMonthAndDay(3,7);
+setMonthAndDay(4,13);

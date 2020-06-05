@@ -2,27 +2,27 @@ let mapArray,ctx,currentImgMainX,currentImgMainY;
 let imgMountain,imgMain,imgEnemy;
 
 $(document).ready(function(){
-    mapArray = [0,1,1,0,0,0,3,1,2];
+    mapArray = [3,0,1,0,0,0,1,0,1];
     ctx = $("#myCanvas")[0].getContext("2d");
 
     imgMain = new Image();
-    imgMain.src = "RPG/images/spriteSheet.png";
-    currentImgMainX = 0;
+    imgMain.src = "RPG/images/baseball_PNG19070.png";
+    currentImgMainX = 200;
     currentImgMainY = 0;
     imgMain.onload = function(){
-        ctx.drawImage(imgMain,0,0,80,130,currentImgMainX,currentImgMainY,200,200);
+        ctx.drawImage(imgMain,0,0,198,200,currentImgMainX,currentImgMainY,200,200);
     };
     imgMountain = new Image();
-    imgMountain.src = "RPG/images/material.png";
+    imgMountain.src = "RPG/images/glove.png";
     imgEnemy = new Image();
-    imgEnemy.src = "RPG/images/Enemy.png";
+    imgEnemy.src = "RPG/images/baseball_PNG19069.png";
     imgMountain.onload = function(){
         imgEnemy.onload = function(){
             for(let x in mapArray){
                 if(mapArray[x]==1){
-                    ctx.drawImage(imgMountain,32,65,32,32,x%3*200,Math.floor(x/3)*200,200,200);
+                    ctx.drawImage(imgMountain,0, 0, 40, 46, x%3*200, Math.floor(x/3)*200, 200, 200);
                }else if(mapArray[x]==3){
-                   ctx.drawImage(imgEnemy,7,40,104,135,x%3*200,Math.floor(x/3)*200,200,200);
+                   ctx.drawImage(imgEnemy,0,0,780,1023,x%3*200,Math.floor(x/3)*200,200,200);
 
                }
 
@@ -37,17 +37,17 @@ $(document).keydown(function(event){
         case "ArrowLeft":
             targetImgMainX = currentImgMainX-200;
             targetImgMainY = currentImgMainY;
-            cutImagePositionX = 175;
+            cutImagePositionX = 0;
             break;
         case "ArrowUp":
             targetImgMainX = currentImgMainX;
             targetImgMainY = currentImgMainY-200;
-            cutImagePositionX = 355;
+            cutImagePositionX = 0;
             break;
         case "ArrowRight":
             targetImgMainX = currentImgMainX+200;
             targetImgMainY = currentImgMainY;
-            cutImagePositionX = 540;
+            cutImagePositionX = 0;
             break;
         case "ArrowDown":
             targetImgMainX = currentImgMainX;
@@ -71,20 +71,20 @@ $(document).keydown(function(event){
         currentImgMainX = targetImgMainX;
         currentImgMainY = targetImgMainY;
     }
-    ctx.drawImage(imgMain,cutImagePositionX,0,80,130,currentImgMainX,currentImgMainY,200,200);
+    ctx.drawImage(imgMain,cutImagePositionX,0,198,200,currentImgMainX,currentImgMainY,200,200);
 
     switch(mapArray[targetBlock]){
         case undefined:
-            $("#talkBox").text("邊界");
+            $("#talkBox").text("界外");
             break;
         case 1:
-            $("#talkBox").text("有山");
+            $("#talkBox").text("接殺");
             break;
         case 2:
-            $("#talkBox").text("抵達終點");
+            $("#talkBox").text("安打");
             break;
         case 3:
-            $("#talkBox").text("哈囉");
+            $("#talkBox").text("保送");
             break;
 
 

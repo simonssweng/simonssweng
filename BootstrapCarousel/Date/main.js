@@ -12,7 +12,7 @@ function setTable(){
     $("#courseTable").empty();
 
     $("#courseTable").append(
-        "<tr><th>場次</th><th>時間</th><th>主題</th></tr>"
+        "<tr><th>日期</th><th>時間</th><th>賽程場數</th></tr>"
     );
 
     let topicCount = topicsArray.length;
@@ -20,14 +20,14 @@ function setTable(){
 
     for(let x=0;x<topicCount;x++){
         
-        let thisDate = new Date(startDate.getTime()+7*x*oneDayMilliseconds);
+        let thisDate = new Date(startDate.getTime()+1*x*oneDayMilliseconds);
         let trSpecial = "<tr>";
         if(topicsArray[x]=="不上課"){
             trSpecial = "<tr style='background.color:lightyellow'>";
         }
         $("#courseTable").append(
             trSpecial+
-            "<td>"+ (x+1) + "</td>"+
+            "<td>"+ "星期" + (x+1) + "</td>"+
             "<td>"+ thisDate.toLocaleDateString().slice(5) +"</td>"+
             "<td>" + topicsArray[x]+"</td>"+
             "</tr>" 
